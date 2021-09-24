@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <script defer src="/scripts/verifyLink.js"></script>
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+    </style>
+    <title>URL Shorten</title>
+  </head>
+  <body>
+    <header>
+      <a href="/"
+        ><h1><span>URL</span> Shorten</h1></a
+      >
+    </header>
+    <main>
+      <form action="/" method="POST">
+        <input
+          type="url"
+          name="url"
+          required
+          autocomplete="off"
+          placeholder="Put the link you want to shorten"
+          value="https://"
+        />
+        <button>Shorten</button>
+      </form>
+      <% if (shortenUrl) { %>
+      <div class="shorten-link">
+        <h3>Here is your Shorten Link</h3>
+        <div class="link-area">
+          <div class="link">localhost:3000/r/<%= code %></div>
+          <div class="copy">
+            <img src="/img/copy.svg" alt="Copy Shorten Link" />
+          </div>
+        </div>
+        <input
+          type="text"
+          value="localhost:3000/r/<%=code%> "
+          class="sr-only"
+        />
+      </div>
+      <% } %>
+      <p>
+        Made with <span>❤</span> by
+        <a href="https://github.com/IgorVini25" target="_blank">IgorVini25</a>
+      </p>
+    </main>
+    <div id="error">
+      <p><span>!</span> URL Invalid</p>
+      <div class="error-timer">
+        <progress max="100" value="0"></progress>
+      </div>
+    </div>
+  </body>
+</html>
