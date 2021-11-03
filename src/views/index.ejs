@@ -12,6 +12,7 @@
     />
     <link rel="stylesheet" href="/styles/style.css" />
     <script defer src="/scripts/verifyLink.js"></script>
+    <script defer src="/scripts/script.js"></script>
     <style>
       .sr-only {
         position: absolute;
@@ -34,7 +35,7 @@
       >
     </header>
     <main>
-      <form action="/" method="POST">
+      <form action="#" method="POST">
         <input
           type="url"
           name="url"
@@ -45,22 +46,6 @@
         />
         <button>Shorten</button>
       </form>
-      <% if (shortenUrl) { %>
-      <div class="shorten-link">
-        <h3>Here is your Shorten Link</h3>
-        <div class="link-area">
-          <div class="link">localhost:3000/r/<%= code %></div>
-          <div class="copy">
-            <img src="/img/copy.svg" alt="Copy Shorten Link" />
-          </div>
-        </div>
-        <input
-          type="text"
-          value="localhost:3000/r/<%=code%> "
-          class="sr-only"
-        />
-      </div>
-      <% } %>
       <p>
         Made with <span>❤</span> by
         <a href="https://github.com/IgorVini25" target="_blank">IgorVini25</a>

@@ -65,7 +65,7 @@ function generateCode() {
 module.exports = {
   async createLink(req, res) {
     // If user try send a link without frontend, block this
-    const link = req.body.url
+    const { url } = req.body
 
     const urlCode = generateCode()
 
@@ -76,18 +76,20 @@ module.exports = {
       }
     })
 
-    createShortenLink(urlCode, link)
+    createShortenLink(urlCode, url)
 
     function createShortenLink(code, link) {
       dbQuery(
         `INSERT INTO global (urlCode, redirect) VALUES ('${code}', '${link}')`
       )
     }
-    res.render('index', { shortenUrl: true, code: urlCode })
+    res.json({
+      url: urlCode
+    })
   },
 
   async redirect(req, res) {
-    const code = req.params.code
+    const { code } = req.params
 
     const links = await dbQuery('SELECT urlCode, redirect FROM global')
     let i = 0

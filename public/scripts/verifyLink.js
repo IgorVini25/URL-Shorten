@@ -29,12 +29,3 @@ function error(message, error) {
       : (errorTimer.value += 1)
   }, 70)
 }
-
-const copy = document.querySelector('.shorten-link .link-area .copy')
-const copyInput = document.querySelector('.shorten-link input')
-
-copy.onclick = () => {
-  copyInput.select()
-  document.execCommand('copy')
-  error('Copied!', false)
-}
